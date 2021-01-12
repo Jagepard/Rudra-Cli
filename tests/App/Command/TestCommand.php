@@ -3,26 +3,26 @@
 
 namespace Rudra\Cli\Tests\App\Command;
 
-use Rudra\Cli\AbstractCommand;
+use Rudra\Cli\ConsoleFacade as Cli;
 
-class TestCommand extends AbstractCommand
+class TestCommand
 {
     public function actionIndex()
     {
-        $this->console->printer("Вы готовы дети?  Скажите 'да' капитан: ");
+        Cli::printer("Вы готовы дети?  Скажите 'да' капитан: ");
 
         $line = fgets(fopen("php://stdin","r"));
 
         if(trim($line) != 'да'){
-            $this->console->printer("actionIndex\n");
+            Cli::printer("actionIndex\n");
             exit;
         }
 
-        $this->console->printer("Привет Сквидвард!\n");
+        Cli::printer("Привет Сквидвард!\n");
     }
 
     public function actionSecond()
     {
-        $this->console->printer("actionSecond!\n");
+        Cli::printer("actionSecond!\n");
     }
 }

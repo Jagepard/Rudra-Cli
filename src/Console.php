@@ -44,7 +44,7 @@ class Console
         print "\e[{$fg};{$bg}m{$text}\e[0m\n";
     }
 
-    public function addCommand($name, $command)
+    public function addCommand($name, $command): void
     {
         if (array_key_exists($name, $this->registry)) {
             throw new \InvalidArgumentException("Key already exist");
@@ -53,7 +53,7 @@ class Console
         $this->registry[$name] = $command;
     }
 
-    public function run($inputArgs)
+    public function run($inputArgs): void
     {
         $firstKey = array_key_first($inputArgs);
 
@@ -71,5 +71,10 @@ class Console
         if (!array_key_exists($key, self::COLOR)) {
             throw new \InvalidArgumentException("Key doesn't exist");
         }
+    }
+
+    public function getRegistry(): array
+    {
+        return $this->registry;
     }
 }
