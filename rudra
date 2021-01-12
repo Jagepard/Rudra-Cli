@@ -1,0 +1,18 @@
+#!/usr/bin/php
+<?php
+
+if (php_sapi_name() !== 'cli') {
+    exit;
+}
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Rudra\Cli\Console;
+
+parse_str(implode('&', array_slice($argv, 1)), $inputArgs);
+
+$console = new Console();
+$console->printer(" RUDRA CONSOLE: ", "white", "green");
+$console->addCommand("input", [\Rudra\Cli\Tests\App\Command\TestCommand::class]);
+
+$console->run($inputArgs);
