@@ -39,8 +39,8 @@ class Console
 
     public function printer(string $text, string $fg = "default", string $bg = "default"): void
     {
-        $this->checkKey($fg, self::COLOR);
-        $this->checkKey($bg, self::COLOR);
+        $this->checkKey($fg);
+        $this->checkKey($bg);
 
         $fg = self::COLOR[$fg][0];
         $bg = self::COLOR[$bg][1];
@@ -50,7 +50,10 @@ class Console
 
     public function addCommand($name, $command)
     {
-        $this->checkKey($name, $this->registry);
+        if (array_key_exists($name, $this->registry)) {
+            throw new \InvalidArgumentException("Key already exist");
+        }
+
         $this->registry[$name] = $command;
     }
 
@@ -67,10 +70,10 @@ class Console
         }
     }
 
-    public function checkKey(string $key, array $data): void
+    public function checkKey(string $key): void
     {
-        if (array_key_exists($key, $data)) {
-            throw new \InvalidArgumentException("Key already exist");
+        if (!array_key_exists($key, self::COLOR)) {
+            throw new \InvalidArgumentException("Key doesn't exist");
         }
     }
 }
