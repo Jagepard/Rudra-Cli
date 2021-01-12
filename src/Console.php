@@ -11,28 +11,24 @@ namespace Rudra\Cli;
 
 class Console
 {
-    /**
-     * First key - Foreground color
-     * Second key - Background color
-     */
     const COLOR = [
-        "default" => [39, 49],
-        "black" => [30, 40],
-        "red" => [31, 41],
-        "green" => [32, 42],
-        "yellow" => [33, 43],
-        "blue" => [34, 44],
-        "magneta" => [35, 45],
-        "cyan" => [36, 46],
-        "light_gray" => [37, 47],
-        "dark_gray" => [90, 100],
-        "light_red" => [91, 101],
-        "light_green" => [92, 102],
-        "light_yellow" => [93, 103],
-        "light_blue" => [94, 104],
-        "light_magneta" => [95, 105],
-        "light_cyan" => [96, 106],
-        "white" => [97, 107],
+        "default" => 39,
+        "black" => 30,
+        "red" => 31,
+        "green" => 32,
+        "yellow" => 33,
+        "blue" => 34,
+        "magneta" => 35,
+        "cyan" => 36,
+        "light_gray" => 37,
+        "dark_gray" => 90,
+        "light_red" => 91,
+        "light_green" => 92,
+        "light_yellow" => 93,
+        "light_blue" => 94,
+        "light_magneta" => 95,
+        "light_cyan" => 96,
+        "white" => 97,
     ];
 
     private array $registry = [];
@@ -42,8 +38,8 @@ class Console
         $this->checkKey($fg);
         $this->checkKey($bg);
 
-        $fg = self::COLOR[$fg][0];
-        $bg = self::COLOR[$bg][1];
+        $fg = self::COLOR[$fg];
+        $bg = self::COLOR[$bg] + 10;
 
         echo "\e[{$fg};{$bg}m{$text}\e[0m\n";
     }
