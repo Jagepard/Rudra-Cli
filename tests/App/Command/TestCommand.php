@@ -14,20 +14,22 @@ class TestCommand
         $this->console = new Console();
     }
 
-    public function actionIndex(...$param)
+    public function actionIndex()
     {
-        echo "Вы готовы дети?  Скажите 'да' капитан: ";
+        $this->console->printer("Вы готовы дети?  Скажите 'да' капитан: ");
 
-        $handle = fopen ("php://stdin","r");
-        $line = fgets($handle);
+        $line = fgets(fopen("php://stdin","r"));
 
         if(trim($line) != 'да'){
-            echo "ABORTING!\n";
+            $this->console->printer("actionIndex\n");
             exit;
         }
 
-        echo "\n";
+        $this->console->printer("Привет Сквидвард!\n");
+    }
 
-        $this->console->printer("Привет Сквидвард!");
+    public function actionSecond()
+    {
+        $this->console->printer("actionSecond!\n");
     }
 }

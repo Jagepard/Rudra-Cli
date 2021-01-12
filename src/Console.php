@@ -41,7 +41,7 @@ class Console
         $fg = self::COLOR[$fg];
         $bg = self::COLOR[$bg] + 10;
 
-        echo "\e[{$fg};{$bg}m{$text}\e[0m\n";
+        print "\e[{$fg};{$bg}m{$text}\e[0m\n";
     }
 
     public function addCommand($name, $command)
