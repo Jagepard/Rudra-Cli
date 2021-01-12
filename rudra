@@ -8,12 +8,13 @@ if (php_sapi_name() !== 'cli') {
 require __DIR__ . '/vendor/autoload.php';
 
 use Rudra\Cli\Console;
+use Rudra\Cli\Tests\App\Command\TestCommand;
 
 parse_str(implode('&', array_slice($argv, 1)), $inputArgs);
 
 $console = new Console();
 $console->printer(" RUDRA CONSOLE: ", "white", "green");
-$console->addCommand(1, [\Rudra\Cli\Tests\App\Command\TestCommand::class]);
-$console->addCommand(2, [\Rudra\Cli\Tests\App\Command\TestCommand::class, "actionSecond"]);
+$console->addCommand(1, [TestCommand::class]);
+$console->addCommand(2, [TestCommand::class, "actionSecond"]);
 
 $console->run($inputArgs);
