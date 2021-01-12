@@ -3,17 +3,10 @@
 
 namespace Rudra\Cli\Tests\App\Command;
 
-use Rudra\Cli\Console;
+use Rudra\Cli\AbstractCommand;
 
-class TestCommand
+class TestCommand extends AbstractCommand
 {
-    public Console $console;
-
-    public function __construct()
-    {
-        $this->console = new Console();
-    }
-
     public function actionIndex()
     {
         $this->console->printer("Вы готовы дети?  Скажите 'да' капитан: ");
