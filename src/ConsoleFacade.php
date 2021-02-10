@@ -22,4 +22,19 @@ use Rudra\Container\Traits\FacadeTrait;
 class ConsoleFacade
 {
     use FacadeTrait;
+
+    public static function init()
+    {
+        ConsoleFacade::addCommand("create:seed", [Commands\CreateSeedCommand::class]);
+        ConsoleFacade::addCommand("create:migration", [Commands\CreateMigrationCommand::class]);
+        ConsoleFacade::addCommand("seed", [Commands\SeedCommand::class]);
+        ConsoleFacade::addCommand("migrate", [Commands\MigrateCommand::class]);
+        ConsoleFacade::addCommand("crud", [Commands\AddCrudCommand::class, "actionAdd"]);
+        ConsoleFacade::addCommand("events", [Commands\EventsCommand::class]);
+        ConsoleFacade::addCommand("routes", [Commands\RouterCommand::class]);
+        ConsoleFacade::addCommand("routes:bundle", [Commands\RouterCommand::class, "actionBundle"]);
+        ConsoleFacade::addCommand("bcrypt", [Commands\BcryptCommand::class]);
+        ConsoleFacade::addCommand("serve", [Commands\ServeCommand::class]);
+        ConsoleFacade::addCommand("help", [Commands\ConsoleCommand::class]);
+    }
 }
