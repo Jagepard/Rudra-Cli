@@ -9,16 +9,16 @@ class TestCommand
 {
     public function actionIndex()
     {
-        Cli::printer("Вы готовы дети?  Скажите 'да' капитан: ");
+        Cli::printer("Вы готовы дети?  Скажите ", "magneta");
+        Cli::printer("ДА", "yellow");
+        Cli::printer(" капитан: ", "magneta");
 
-        $line = fgets(fopen("php://stdin","r"));
-
-        if(trim($line) != 'да'){
-            Cli::printer("actionIndex\n");
+        if(trim(Cli::read()) != 'да'){
+            Cli::printer("Неверный ответ(\n", "red");
             exit;
         }
 
-        Cli::printer("Привет Сквидвард!\n");
+        Cli::printer("Привет Сквидвард!\n", "green");
     }
 
     public function actionSecond()
