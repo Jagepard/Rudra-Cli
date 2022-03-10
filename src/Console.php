@@ -107,6 +107,8 @@ class Console implements ConsoleInterface
             $method = $this->registry[$firstKey][1] ?? "actionIndex";
 
             $class->$method();
+        } else {
+            $this->printer("Command \"$firstKey\" not found" . PHP_EOL, 'light_yellow');
         }
     }
 
