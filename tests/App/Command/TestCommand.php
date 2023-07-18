@@ -13,7 +13,7 @@ class TestCommand
         Cli::printer("ДА", "yellow");
         Cli::printer(" капитан: ", "magneta");
 
-        if(trim(Cli::read()) != 'да'){
+        if(trim(Cli::reader()) != 'да'){
             Cli::printer("Неверный ответ(\n", "red");
             exit;
         }
