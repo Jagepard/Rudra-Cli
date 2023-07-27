@@ -37,22 +37,22 @@ class Console implements ConsoleInterface
     ];
 
     /**
-     * @var array
-     *
      * Command registry
      * ----------------
      * Реестр команд
+     * 
+     * @var array
      */
     private array $registry = [];
 
     /**
-     * @param string $text
-     * @param string $fg
-     * @param string $bg
-     *
      * Prints formatted text
      * ---------------------
      * Печатает отфармотированный текст
+     * 
+     * @param string $text
+     * @param string $fg
+     * @param string $bg
      */
     public function printer(string $text, string $fg = "default", string $bg = "default"): void
     {
@@ -63,11 +63,11 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * @return false|string
-     *
      * Get the data entered in the console
      * -----------------------------------
      * Получет данные введенные в консоли
+     * 
+     * @return false|string
      */
     public function reader(): string
     {
@@ -75,12 +75,12 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * @param $name
-     * @param $command
-     *
      * Adds a command to the registry
      * ------------------------------
      * Добавляет команду в реестр
+     * 
+     * @param $name
+     * @param $command
      */
     public function addCommand($name, $command): void
     {
@@ -92,11 +92,11 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * @param $inputArgs
-     *
      * Calls command methods
      * ---------------------
      * Вызывает методы команды
+     * 
+     * @param $inputArgs
      */
     public function invoke($inputArgs): void
     {
@@ -113,11 +113,11 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * @return array
-     *
      * Retrieves the commands registry
      * ----------------------
      * Получает реестр команд
+     * 
+     * @return array
      */
     public function getRegistry(): array
     {
@@ -125,11 +125,11 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * @param string $key
-     *
      * Checks if there is a color in the array
      * ---------------------------------------
      * Проверяет есть ли цвет в массиве
+     * 
+     * @param string $key
      */
     private function checkColorExists(string $key): void
     {
