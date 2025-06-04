@@ -3,8 +3,8 @@
 declare(strict_types = 1);
 
 /**
- * @author    : Jagepard <jagepard@yandex.ru">
- * @license   https://mit-license.org/ MIT
+ * @author  : Jagepard <jagepard@yandex.ru">
+ * @license https://mit-license.org/ MIT
  */
 
 namespace Rudra\Cli;
@@ -13,8 +13,6 @@ class Console implements ConsoleInterface
 {
     /*
      * Colors of text decoration in the console
-     * ----------------------------------------
-     * Цвета оформления текста в консоли
      */
     const COLOR = [
         "default"       => 39,
@@ -36,19 +34,10 @@ class Console implements ConsoleInterface
         "white"         => 97,
     ];
 
-    /**
-     * Command registry
-     * ----------------
-     * Реестр команд
-     * 
-     * @var array
-     */
     private array $registry = [];
 
     /**
      * Prints formatted text
-     * ---------------------
-     * Печатает отфармотированный текст
      * 
      * @param string $text
      * @param string $fg
@@ -64,8 +53,6 @@ class Console implements ConsoleInterface
 
     /**
      * Get the data entered in the console
-     * -----------------------------------
-     * Получет данные введенные в консоли
      * 
      * @return false|string
      */
@@ -76,8 +63,6 @@ class Console implements ConsoleInterface
 
     /**
      * Adds a command to the registry
-     * ------------------------------
-     * Добавляет команду в реестр
      * 
      * @param $name
      * @param $command
@@ -93,8 +78,6 @@ class Console implements ConsoleInterface
 
     /**
      * Calls command methods
-     * ---------------------
-     * Вызывает методы команды
      * 
      * @param $inputArgs
      */
@@ -114,8 +97,6 @@ class Console implements ConsoleInterface
 
     /**
      * Retrieves the commands registry
-     * ----------------------
-     * Получает реестр команд
      * 
      * @return array
      */
@@ -126,8 +107,6 @@ class Console implements ConsoleInterface
 
     /**
      * Checks if there is a color in the array
-     * ---------------------------------------
-     * Проверяет есть ли цвет в массиве
      * 
      * @param string $key
      */
