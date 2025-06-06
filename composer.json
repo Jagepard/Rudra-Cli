@@ -12,19 +12,20 @@
         {
             "name": "Jagepard",
             "email": "jagepard@yandex.ru",
-            "homepage": "https://jagepard.ru",
+            "homepage": "https://jagepard.ru",    
             "role": "Developer"
         }
     ],
     "support": {
-        "email": "jagepard@yandex.ru"
+        "email": "jagepard@yandex.ru",
+        "issues": "https://github.com/Jagepard/Rudra-Cli/issues",    
+        "source": "https://github.com/Jagepard/Rudra-Cli"    
     },
     "require": {
-        "php": ">=8.3"
-    },
-    "require-dev": {
-        "rudra/docs": "dev-master",
-        "rudra/exception": "dev-master"
+        "php": ">=8.3",
+        "rudra/container": "self.version",
+        "rudra/docs": "self.version",
+        "rudra/exception": "self.version"
     },
     "autoload": {
         "psr-4": {
@@ -37,8 +38,10 @@
         }
     },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "optimize-autoloader": true,
-        "prefer-stable": true
+        "sort-packages": true,
+        "platform-check": false
     }
 }
