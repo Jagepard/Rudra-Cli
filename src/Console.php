@@ -9,6 +9,8 @@ declare(strict_types = 1);
 
 namespace Rudra\Cli;
 
+use Rudra\Exceptions\LogicException;
+
 class Console implements ConsoleInterface
 {
     /*
@@ -70,7 +72,7 @@ class Console implements ConsoleInterface
     public function addCommand($name, $command): void
     {
         if (array_key_exists($name, $this->registry)) {
-            throw new \InvalidArgumentException("Command $name already exist");
+            throw new LogicException("Command $name already exist");
         }
 
         $this->registry[$name] = $command;
@@ -113,7 +115,7 @@ class Console implements ConsoleInterface
     private function checkColorExists(string $key): void
     {
         if (!array_key_exists($key, self::COLOR)) {
-            throw new \InvalidArgumentException("Color $key doesn't exist");
+            throw new LogicException("Color $key doesn't exist");
         }
     }
 }

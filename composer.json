@@ -1,41 +1,44 @@
 {
-    "name"             : "rudra/cli",
-    "description"      : "Cli Application",
-    "type"             : "library",
-    "keywords"         : [
+    "name": "rudra/cli",
+    "description": "Cli Application",
+    "type": "library",
+    "keywords": [
         "rudra",
         "cli",
         "command-line"
     ],
-    "license"          : "MIT",
-    "authors"          : [
+    "license": "MIT",
+    "authors": [
         {
-            "name"    : "Jagepard",
-            "email"   : "jagepard@yandex.ru",
+            "name": "Jagepard",
+            "email": "jagepard@yandex.ru",
             "homepage": "https://jagepard.ru",
-            "role"    : "Developer"
+            "role": "Developer"
         }
     ],
-    "support"          : {
+    "support": {
         "email": "jagepard@yandex.ru"
     },
-    "require"          : {
-        "php"            : ">=7.4",
-        "rudra/docs": "dev-master"
+    "require": {
+        "php": ">=8.3"
     },
-    "autoload"         : {
+    "require-dev": {
+        "rudra/docs": "dev-master",
+        "rudra/exception": "dev-master"
+    },
+    "autoload": {
         "psr-4": {
             "Rudra\\Cli\\": "src/"
         }
     },
-    "autoload-dev"     : {
+    "autoload-dev": {
         "psr-4": {
             "Rudra\\Cli\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",
-    "config"           : {
+    "config": {
         "optimize-autoloader": true,
-        "prefer-stable"      : true
+        "prefer-stable": true
     }
 }
