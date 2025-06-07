@@ -13,7 +13,7 @@ use Rudra\Cli\Tests\App\Command\TestCommand;
 parse_str(implode('&', array_slice($argv, 1)), $inputArgs);
 
 $console = new Console();
-$console->addCommand(1, [TestCommand::class]);
-$console->addCommand(2, [TestCommand::class, "actionSecond"]);
+$console->addCommand('spongebob', [TestCommand::class]);
+$console->addCommand('second', [TestCommand::class, "actionSecond"]);
 
 $console->invoke($inputArgs);

@@ -37,6 +37,16 @@ class Console implements ConsoleInterface
     ];
 
     private array $registry = [];
+    private $stdin;
+
+    /**
+     * @param  $stream
+     * @return void
+     */
+    public function setStdin($stream)
+    {
+        $this->stdin = $stream;
+    }
 
     /**
      * Prints formatted text
@@ -60,7 +70,7 @@ class Console implements ConsoleInterface
      */
     public function reader(): string
     {
-        return fgets(fopen("php://stdin","r"));
+        return fgets($this->stdin ?? fopen("php://stdin", "r"));
     }
 
     /**
