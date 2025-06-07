@@ -19,11 +19,16 @@ class TestCommand
             exit;
         }
 
-        Cli::printer("Привет Сквидвард!\n", "green");
+        Cli::printer("Кто обетает на дне океана?! SPONGEBOB SQUAREPANTS!!!\n", "green");
     }
 
     public function actionSecond()
     {
         Cli::printer("actionSecond!\n");
+    }
+
+    public function customAction()
+    {
+        Cli::printer("Custom action called!\n");
     }
 }

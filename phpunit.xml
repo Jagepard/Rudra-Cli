@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         colors="true"
+         stopOnFailure="false"
+         bootstrap="vendor/autoload.php"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.1/phpunit.xsd" 
+         cacheDirectory=".phpunit.cache">
+    <coverage>
+        <report>
+            <clover outputFile="tests/build/logs/clover.xml"/>
+            <html outputDirectory="tests/build/coverage"/>
+            <text outputFile="tests/build/coverage.txt"/>
+        </report>
+    </coverage>
+    <testsuites>
+        <testsuite name="Rudra-Cli">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+        <exclude>
+            <file>./tests/Stub/PageController.php</file>
+        </exclude>
+    </source>
+    <php>
+        <ini name="display_errors" value="1"/>
+        <ini name="error_reporting" value="-1"/>
+    </php>
+</phpunit>
