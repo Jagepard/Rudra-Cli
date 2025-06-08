@@ -6,11 +6,11 @@
 
 # Rudra-Cli | [API](https://github.com/Jagepard/Rudra-Cli/blob/main/docs.md)
 
-```php rudra-docs spongebob```
+```php rudra spongebob```
 
 - Вы готовы дети?  Скажите ДА капитан: да
 - Не слышу!!!(
 
-```php rudra-docs spongebob```
+```php rudra spongebob```
 - Вы готовы дети?  Скажите ДА капитан: ДА
 - Кто обетает на дне океана?! SPONGEBOB SQUAREPANTS!!!
