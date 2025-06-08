@@ -75,7 +75,7 @@ class ConsoleTest extends TestCase
         $output = preg_replace('/\e\[[0-9;]*m/', '', $output);
 
         $this->assertStringContainsString("Вы готовы дети?  Скажите ДА капитан: ", $output);
-        $this->assertStringContainsString("Привет Сквидвард!", $output);
+        $this->assertStringContainsString("Кто обетает на дне океана?! SPONGEBOB SQUAREPANTS!!!", $output);
     }
 
     public function testReaderWithValidInput()
