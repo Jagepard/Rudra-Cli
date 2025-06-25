@@ -6,6 +6,18 @@
 
 # Rudra-Cli | [API](https://github.com/Jagepard/Rudra-Cli/blob/main/docs.md)
 
+```php
+use Rudra\Cli\Console;
+use Rudra\Cli\Tests\App\Command\TestCommand;
+
+parse_str(implode('&', array_slice($argv, 1)), $inputArgs);
+
+$console = new Console();
+$console->addCommand('spongebob', [TestCommand::class]);
+$console->addCommand('second', [TestCommand::class, "actionSecond"]);
+
+$console->invoke($inputArgs);
+```
 ```php rudra spongebob```
 
 - Вы готовы дети?  Скажите ДА капитан: да
