@@ -79,7 +79,7 @@ class Console implements ConsoleInterface
      * @param $name
      * @param $command
      */
-    public function addCommand($name, $command): void
+    public function addCommand(string $name, array $command): void
     {
         if (array_key_exists($name, $this->registry)) {
             throw new LogicException("Command $name already exist");
@@ -93,7 +93,7 @@ class Console implements ConsoleInterface
      * 
      * @param $inputArgs
      */
-    public function invoke($inputArgs): void
+    public function invoke(array $inputArgs): void
     {
         $firstKey = array_key_first($inputArgs);
 
@@ -103,7 +103,7 @@ class Console implements ConsoleInterface
 
             $class->$method();
         } else {
-            $this->printer("Command \"$firstKey\" not found" . PHP_EOL, 'light_yellow');
+            $this->printer("⚠️  Command \"$firstKey\" not found" . PHP_EOL, 'light_yellow');
         }
     }
 
