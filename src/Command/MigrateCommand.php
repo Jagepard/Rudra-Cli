@@ -2,8 +2,8 @@
 
 namespace Rudra\Cli\Command;
 
+use ConsoleFacade as Cli;
 use Rudra\Container\Facades\Rudra;
-use Rudra\Cli\Command\ConsoleFacade as Cli;
 use App\Ship\Utils\Database\LoggerAdapter;
 
 class MigrateCommand extends LoggerAdapter
