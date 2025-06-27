@@ -3,8 +3,8 @@
 namespace Rudra\Cli\Command;
 
 use Exception;
+use ConsoleFacade as Cli;
 use Symfony\Component\Yaml\Yaml;
-use Rudra\Cli\Command\ConsoleFacade as Cli;
 
 class ArrayToYml
 {

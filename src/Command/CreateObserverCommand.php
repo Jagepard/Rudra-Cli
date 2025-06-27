@@ -2,9 +2,9 @@
 
 namespace Rudra\Cli\Command;
 
+use ConsoleFacade as Cli;
 use App\Ship\Utils\FileCreator;
 use Rudra\Container\Facades\Rudra;
-use Rudra\Cli\Command\ConsoleFacade as Cli;
 
 class CreateObserverCommand extends FileCreator
 {

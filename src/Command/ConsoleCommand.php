@@ -2,7 +2,7 @@
 
 namespace Rudra\Cli\Command;
 
-use Rudra\Cli\Command\ConsoleFacade as Cli;
+use ConsoleFacade as Cli;
 
 class ConsoleCommand
 {
