@@ -2,8 +2,8 @@
 
 namespace Rudra\Cli\Command;
 
-use ConsoleFacade as Cli;
 use Rudra\Auth\AuthFacade as Auth;
+use Rudra\Cli\ConsoleFacade as Cli;
 use Rudra\Container\Facades\Request;
 
 class BcryptCommand
