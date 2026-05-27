@@ -13,12 +13,12 @@ namespace Rudra\Cli;
 
 use Rudra\Exceptions\LogicException;
 
-class Console implements ConsoleInterface
+final class Console implements ConsoleInterface
 {
     /*
      * Colors of text decoration in the console
      */
-    const COLOR = [
+    public const array COLOR = [
         "default"       => 39,
         "black"         => 30,
         "red"           => 31,
@@ -39,81 +39,106 @@ class Console implements ConsoleInterface
     ];
 
     private array $registry = [];
-    private $stdin;
+
+    /** @var resource|null */
+    private mixed $stdin    = null;
 
     /**
-     * @param  $stream
+     * @param resource|null $stream
      * @return void
      */
-    public function setStdin($stream)
+    public function setStdin(mixed $stream): void
     {
+        if ($stream !== null && !is_resource($stream)) {
+            throw new \InvalidArgumentException('Argument #1 ($stream) must be of type resource or null');
+        }
+        
         $this->stdin = $stream;
     }
 
     /**
-     * Prints formatted text
-     * 
-     * @param string $text
-     * @param string $fg
-     * @param string $bg
+     * Prints formatted text with foreground and background colors.
+     *
+     * @param string $text Text to output
+     * @param string $fg   Foreground color (key from self::COLOR)
+     * @param string $bg   Background color (key from self::COLOR)
+     * @return void
      */
+    #[\Override]
     public function printer(string $text, string $fg = "default", string $bg = "default"): void
     {
         $this->checkColorExists($fg);
         $this->checkColorExists($bg);
 
-        printf("\e[%s;%sm{$text}\e[0m", self::COLOR[$fg], self::COLOR[$bg] + 10);
+        $fgCode = self::COLOR[$fg];
+        $bgCode = self::COLOR[$bg] + 10;
+
+        echo "\e[{$fgCode};{$bgCode}m{$text}\e[0m";
     }
 
     /**
-     * Get the data entered in the console
-     * 
-     * @return false|string
+     * Get the data entered in the console.
+     *
+     * @return string The input line or empty string on EOF/error.
      */
+    #[\Override]
     public function reader(): string
     {
-        return fgets($this->stdin ?? fopen("php://stdin", "r"));
+        $this->stdin ??= fopen("php://stdin", "r");
+        $result = fgets($this->stdin);
+
+        if ($result === false) {
+            throw new LogicException('Failed to read from stdin or EOF reached');
+        }
+
+        return $result;
     }
 
     /**
      * Adds a command to the registry
      * 
-     * @param $name
-     * @param $command
+     * @param string $name
+     * @param array  $command
+     * @return void
      */
+    #[\Override]
     public function addCommand(string $name, array $command): void
     {
         if (array_key_exists($name, $this->registry)) {
             throw new LogicException("Command $name already exist");
         }
-
+        
         $this->registry[$name] = $command;
     }
 
     /**
      * Calls command methods
      * 
-     * @param $inputArgs
+     * @param  array $inputArgs
+     * @return void
      */
+    #[\Override]
     public function invoke(array $inputArgs): void
     {
         $firstKey = array_key_first($inputArgs);
 
-        if (array_key_exists($firstKey, $this->registry)) {
-            $class  = new $this->registry[$firstKey][0];
-            $method = $this->registry[$firstKey][1] ?? "actionIndex";
-
-            $class->$method();
-        } else {
+        if ($firstKey === null || !array_key_exists($firstKey, $this->registry)) {
             $this->printer("⚠️  Command \"$firstKey\" not found" . PHP_EOL, 'light_yellow');
+            return;
         }
+
+        $class  = new $this->registry[$firstKey][0];
+        $method = $this->registry[$firstKey][1] ?? "actionIndex";
+
+        $class->$method();
     }
 
     /**
      * Retrieves the commands registry
      * 
-     * @return array
+     * @return array<string, array>
      */
+    #[\Override]
     public function getRegistry(): array
     {
         return $this->registry;
@@ -122,7 +147,9 @@ class Console implements ConsoleInterface
     /**
      * Checks if there is a color in the array
      * 
-     * @param string $key
+     * @param  string $key
+     * @return void
+     * @throws LogicException
      */
     private function checkColorExists(string $key): void
     {
