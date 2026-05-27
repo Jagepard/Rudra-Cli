@@ -33,8 +33,8 @@ interface ConsoleInterface
     /**
      * Adds a command to the registry
      * 
-     * @param  string $name
-     * @param  array $command
+     * @param string $name
+     * @param array  $command
      * @return void
      */
     public function addCommand(string $name, array $command): void;
