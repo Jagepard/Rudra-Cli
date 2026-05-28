@@ -20,9 +20,9 @@ use Rudra\Container\Traits\FacadeTrait;
  * @method static void   invoke($inputArgs)
  * @method static array  getRegistry()
  *
- * @see Router
+ * @see Console
  */
-class ConsoleFacade
+final class ConsoleFacade
 {
     use FacadeTrait;
 }
