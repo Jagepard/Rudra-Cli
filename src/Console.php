@@ -13,10 +13,12 @@ namespace Rudra\Cli;
 
 use Rudra\Exceptions\LogicException;
 
-final class Console implements ConsoleInterface
+class Console implements ConsoleInterface
 {
     /*
      * Colors of text decoration in the console
+     * ----------------
+     * Цвета оформления текста в консоли.
      */
     public const array COLOR = [
         "default"       => 39,
@@ -44,7 +46,7 @@ final class Console implements ConsoleInterface
     private mixed $stdin    = null;
 
     /**
-     * @param resource|null $stream
+     * @param  resource|null $stream 
      * @return void
      */
     public function setStdin(mixed $stream): void
@@ -58,6 +60,8 @@ final class Console implements ConsoleInterface
 
     /**
      * Prints formatted text with foreground and background colors.
+     * ----------------
+     * Выводит форматированный текст с цветами переднего плана и фона.
      *
      * @param string $text Text to output
      * @param string $fg   Foreground color (key from self::COLOR)
@@ -78,8 +82,10 @@ final class Console implements ConsoleInterface
 
     /**
      * Get the data entered in the console.
+     * ----------------
+     * Получает данные, введённые в консоли.
      *
-     * @return string The input line or empty string on EOF/error.
+     * @return string
      */
     #[\Override]
     public function reader(): string
@@ -96,9 +102,11 @@ final class Console implements ConsoleInterface
 
     /**
      * Adds a command to the registry
+     * ----------------
+     * Добавляет команду в реестр.
      * 
-     * @param string $name
-     * @param array  $command
+     * @param  string $name
+     * @param  array  $command
      * @return void
      */
     #[\Override]
@@ -113,6 +121,8 @@ final class Console implements ConsoleInterface
 
     /**
      * Calls command methods
+     * ----------------
+     * Вызывает методы команды.
      * 
      * @param  array $inputArgs
      * @return void
@@ -135,6 +145,8 @@ final class Console implements ConsoleInterface
 
     /**
      * Retrieves the commands registry
+     * ----------------
+     * Получает реестр команд.
      * 
      * @return array<string, array>
      */
@@ -146,6 +158,8 @@ final class Console implements ConsoleInterface
 
     /**
      * Checks if there is a color in the array
+     * ----------------
+     * Проверяет, есть ли цвет в массиве
      * 
      * @param  string $key
      * @return void

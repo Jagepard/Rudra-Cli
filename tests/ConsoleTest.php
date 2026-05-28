@@ -14,12 +14,11 @@
 namespace Rudra\Cli\Tests;
 
 use Rudra\Cli\Console;
-use PHPUnit\Framework\TestCase;
 use Rudra\Cli\ConsoleFacade as Cli;
 use Rudra\Exceptions\LogicException;
 use Rudra\Cli\Tests\App\Command\TestCommand;
 
-class ConsoleTest extends TestCase
+class ConsoleTest extends \PHPUnit\Framework\TestCase
 {
     private Console $console;
 

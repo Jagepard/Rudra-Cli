@@ -10,12 +10,12 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | `setStdin(?mixed $stream): void`<br> |
-| public | `printer(string $text, string $fg, string $bg): void`<br>Prints formatted text with foreground and background colors. |
-| public | `reader(): string`<br>Get the data entered in the console. |
-| public | `addCommand(string $name, array $command): void`<br>Adds a command to the registry |
-| public | `invoke(array $inputArgs): void`<br>Calls command methods |
-| public | `getRegistry(): array`<br>Retrieves the commands registry |
-| private | `checkColorExists(string $key): void`<br>Checks if there is a color in the array |
+| public | `printer(string $text, string $fg, string $bg): void`<br>Prints formatted text with foreground and background colors.<br>----------------<br>Выводит форматированный текст с цветами переднего плана и фона. |
+| public | `reader(): string`<br>Get the data entered in the console.<br>----------------<br>Получает данные, введённые в консоли. |
+| public | `addCommand(string $name, array $command): void`<br>Adds a command to the registry<br>----------------<br>Добавляет команду в реестр. |
+| public | `invoke(array $inputArgs): void`<br>Calls command methods<br>----------------<br>Вызывает методы команды. |
+| public | `getRegistry(): array`<br>Retrieves the commands registry<br>----------------<br>Получает реестр команд. |
+| private | `checkColorExists(string $key): void`<br>Checks if there is a color in the array<br>----------------<br>Проверяет, есть ли цвет в массиве |
 
 
 <a id="rudra_cli_consolefacade"></a>
@@ -31,11 +31,11 @@
 ### Class: Rudra\Cli\ConsoleInterface
 | Visibility | Function |
 |:-----------|:---------|
-| abstract public | `printer(string $text, string $fg, string $bg): void`<br>Prints formatted text |
-| abstract public | `reader(): string`<br>Get the data entered in the console |
-| abstract public | `addCommand(string $name, array $command): void`<br>Adds a command to the registry |
-| abstract public | `invoke(array $inputArgs): void`<br>Calls command methods |
-| abstract public | `getRegistry(): array`<br>Retrieves the commands registry |
+| abstract public | `printer(string $text, string $fg, string $bg): void`<br>Prints formatted text with foreground and background colors.<br>----------------<br>Выводит форматированный текст с цветами переднего плана и фона. |
+| abstract public | `reader(): string`<br>Get the data entered in the console.<br>----------------<br>Получает данные, введённые в консоли. |
+| abstract public | `addCommand(string $name, array $command): void`<br>Adds a command to the registry<br>----------------<br>Добавляет команду в реестр. |
+| abstract public | `invoke(array $inputArgs): void`<br>Calls command methods<br>----------------<br>Вызывает методы команды. |
+| abstract public | `getRegistry(): array`<br>Retrieves the commands registry<br>----------------<br>Получает реестр команд. |
 <hr>
 
 ###### created with [Rudra-Documentation-Collector](#https://github.com/Jagepard/Rudra-Documentation-Collector)
