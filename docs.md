@@ -9,9 +9,9 @@
 ### Class: Rudra\Cli\Console
 | Visibility | Function |
 |:-----------|:---------|
-| public | `setStdin( $stream)`<br> |
-| public | `printer(string $text, string $fg, string $bg): void`<br>Prints formatted text |
-| public | `reader(): string`<br>Get the data entered in the console |
+| public | `setStdin(?mixed $stream): void`<br> |
+| public | `printer(string $text, string $fg, string $bg): void`<br>Prints formatted text with foreground and background colors. |
+| public | `reader(): string`<br>Get the data entered in the console. |
 | public | `addCommand(string $name, array $command): void`<br>Adds a command to the registry |
 | public | `invoke(array $inputArgs): void`<br>Calls command methods |
 | public | `getRegistry(): array`<br>Retrieves the commands registry |
@@ -23,7 +23,7 @@
 ### Class: Rudra\Cli\ConsoleFacade
 | Visibility | Function |
 |:-----------|:---------|
-| public static | `__callStatic(string $method, array $parameters): ?mixed`<br> |
+| public static | `__callStatic(string $method, array $parameters): ?mixed`<br>Handles static method calls for the Facade class.<br>It dynamically resolves the underlying class name by removing "Facade" from the class name.<br>If the resolved class does not exist, it attempts to clean up the class name by removing spaces.<br>If the resolved class is not already registered in the container, it registers it.<br>Finally, it delegates the static method call to the resolved class instance.<br>-------------------------<br>Обрабатывает статические вызовы методов для класса Facade.<br>Динамически разрешает имя базового класса, удаляя "Facade" из имени класса.<br>Если разрешённый класс не существует, пытается очистить имя класса, удаляя пробелы.<br>Если разрешённый класс ещё не зарегистрирован в контейнере, он регистрируется.<br>В конце делегирует статический вызов метода экземпляру разрешённого класса. |
 
 
 <a id="rudra_cli_consoleinterface"></a>
