@@ -59,9 +59,9 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * Prints formatted text with foreground and background colors.
+     * Prints formatted text with foreground and background colors
      * ----------------
-     * Выводит форматированный текст с цветами переднего плана и фона.
+     * Выводит форматированный текст с цветами переднего плана и фона
      *
      * @param string $text Text to output
      * @param string $fg   Foreground color (key from self::COLOR)
@@ -81,9 +81,9 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * Get the data entered in the console.
+     * Get the data entered in the console
      * ----------------
-     * Получает данные, введённые в консоли.
+     * Получает данные, введённые в консоли
      *
      * @return string
      */
@@ -123,7 +123,7 @@ class Console implements ConsoleInterface
     /**
      * Calls command methods
      * ----------------
-     * Вызывает методы команды.
+     * Вызывает методы команды
      * 
      * @param  array $inputArgs
      * @return void
