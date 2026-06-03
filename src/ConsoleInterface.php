@@ -14,31 +14,19 @@ namespace Rudra\Cli;
 interface ConsoleInterface
 {
     /**
-     * Prints formatted text with foreground and background colors.
-     * ----------------
-     * Выводит форматированный текст с цветами переднего плана и фона.
-     *
-     * @param string $text Text to output
-     * @param string $fg   Foreground color (key from self::COLOR)
-     * @param string $bg   Background color (key from self::COLOR)
+     * @param string $text
+     * @param string $fg
+     * @param string $bg
      * @return void
      */
     public function printer(string $text, string $fg = "default", string $bg = "default"): void;
 
     /**
-     * Get the data entered in the console.
-     * ----------------
-     * Получает данные, введённые в консоли.
-     *
      * @return string
      */
     public function reader(): string;
 
     /**
-     * Adds a command to the registry
-     * ----------------
-     * Добавляет команду в реестр.
-     * 
      * @param  string $name
      * @param  array  $command
      * @return void
@@ -46,20 +34,12 @@ interface ConsoleInterface
     public function addCommand(string $name, array $command): void;
 
     /**
-     * Calls command methods
-     * ----------------
-     * Вызывает методы команды.
-     * 
      * @param  array $inputArgs
      * @return void
      */
     public function invoke(array $inputArgs): void;
 
     /**
-     * Retrieves the commands registry
-     * ----------------
-     * Получает реестр команд.
-     * 
      * @return array<string, array>
      */
     public function getRegistry(): array;
