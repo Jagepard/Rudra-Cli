@@ -91,6 +91,11 @@ class Console implements ConsoleInterface
     public function reader(): string
     {
         $this->stdin ??= fopen("php://stdin", "r");
+        
+        if ($this->stdin === false) {
+            throw new LogicException('Failed to open stdin stream');
+        }
+        
         $result = fgets($this->stdin);
 
         if ($result === false) {
@@ -101,10 +106,6 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * Adds a command to the registry
-     * ----------------
-     * Добавляет команду в реестр.
-     * 
      * @param  string $name
      * @param  array  $command
      * @return void
@@ -144,10 +145,6 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * Retrieves the commands registry
-     * ----------------
-     * Получает реестр команд.
-     * 
      * @return array<string, array>
      */
     #[\Override]
@@ -157,10 +154,6 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * Checks if there is a color in the array
-     * ----------------
-     * Проверяет, есть ли цвет в массиве
-     * 
      * @param  string $key
      * @return void
      * @throws LogicException
