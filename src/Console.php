@@ -15,11 +15,7 @@ use Rudra\Exceptions\LogicException;
 
 class Console implements ConsoleInterface
 {
-    /*
-     * Colors of text decoration in the console
-     * ----------------
-     * Цвета оформления текста в консоли.
-     */
+    // Colors of text decoration in the console
     public const array COLOR = [
         "default"       => 39,
         "black"         => 30,
@@ -46,8 +42,7 @@ class Console implements ConsoleInterface
     private mixed $stdin    = null;
 
     /**
-     * @param  resource|null $stream 
-     * @return void
+     * @throws \InvalidArgumentException
      */
     public function setStdin(mixed $stream): void
     {
@@ -60,13 +55,6 @@ class Console implements ConsoleInterface
 
     /**
      * Prints formatted text with foreground and background colors
-     * ----------------
-     * Выводит форматированный текст с цветами переднего плана и фона
-     *
-     * @param string $text Text to output
-     * @param string $fg   Foreground color (key from self::COLOR)
-     * @param string $bg   Background color (key from self::COLOR)
-     * @return void
      */
     #[\Override]
     public function printer(string $text, string $fg = "default", string $bg = "default"): void
@@ -82,10 +70,8 @@ class Console implements ConsoleInterface
 
     /**
      * Get the data entered in the console
-     * ----------------
-     * Получает данные, введённые в консоли
-     *
-     * @return string
+     * 
+     * @throws LogicException
      */
     #[\Override]
     public function reader(): string
@@ -106,9 +92,7 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * @param  string $name
-     * @param  array  $command
-     * @return void
+     * @throws LogicException
      */
     #[\Override]
     public function addCommand(string $name, array $command): void
@@ -122,11 +106,6 @@ class Console implements ConsoleInterface
 
     /**
      * Calls command methods
-     * ----------------
-     * Вызывает методы команды
-     * 
-     * @param  array $inputArgs
-     * @return void
      */
     #[\Override]
     public function invoke(array $inputArgs): void
@@ -154,8 +133,6 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * @param  string $key
-     * @return void
      * @throws LogicException
      */
     private function checkColorExists(string $key): void
