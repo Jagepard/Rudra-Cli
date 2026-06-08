@@ -98,7 +98,7 @@ class Console implements ConsoleInterface
     public function addCommand(string $name, array $command): void
     {
         if (array_key_exists($name, $this->registry)) {
-            throw new LogicException("Command $name already exist");
+            throw new LogicException("Command $name already exists");
         }
         
         $this->registry[$name] = $command;
@@ -112,7 +112,12 @@ class Console implements ConsoleInterface
     {
         $firstKey = array_key_first($inputArgs);
 
-        if ($firstKey === null || !array_key_exists($firstKey, $this->registry)) {
+        if ($firstKey === null) {
+            $this->printer("⚠️  No command provided" . PHP_EOL, 'light_yellow');
+            return;
+        }
+
+        if (!array_key_exists($firstKey, $this->registry)) {
             $this->printer("⚠️  Command \"$firstKey\" not found" . PHP_EOL, 'light_yellow');
             return;
         }
