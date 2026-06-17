@@ -63,7 +63,7 @@ class ConsoleTest extends \PHPUnit\Framework\TestCase
     public function testActionIndexWithValidInput()
     {
         $command = new TestCommand();
-        $input   = "ДА\n";
+        $input   = "AYE\n";
         $stream  = fopen('php://memory', 'r+');
         fwrite($stream, $input);
         rewind($stream);
@@ -75,8 +75,8 @@ class ConsoleTest extends \PHPUnit\Framework\TestCase
         $output = ob_get_clean();
         $output = preg_replace('/\e\[[0-9;]*m/', '', $output);
 
-        $this->assertStringContainsString("Вы готовы дети?  Скажите ДА капитан: ", $output);
-        $this->assertStringContainsString("Кто обетает на дне океана?! SPONGEBOB SQUAREPANTS!!!", $output);
+        $this->assertStringContainsString("Are you ready, kids? Say AYE captain: ", $output);
+        $this->assertStringContainsString("Who lives in a pineapple under the sea?! SPONGEBOB SQUAREPANTS!!!", $output);
     }
 
     public function testReaderWithValidInput()
