@@ -17,16 +17,16 @@ class TestCommand
 {
     public function actionIndex()
     {
-        Cli::printer("Вы готовы дети?  Скажите ", "magneta");
-        Cli::printer("ДА", "yellow");
-        Cli::printer(" капитан: ", "magneta");
+        Cli::printer("Are you ready, kids? ", "magneta");
+        Cli::printer("Say AYE", "yellow");
+        Cli::printer(" captain: ", "magneta");
 
-        if(trim(Cli::reader()) != 'ДА'){
-            Cli::printer("Не слышу!!!(\n", "red");
-            exit;
-        }
+    if (strtolower(trim(Cli::reader())) !== 'aye') {
+        Cli::printer("I can't hear you!!!\n", "red");
+        exit;
+    }
 
-        Cli::printer("Кто обетает на дне океана?! SPONGEBOB SQUAREPANTS!!!\n", "green");
+        Cli::printer("Who lives in a pineapple under the sea?! SPONGEBOB SQUAREPANTS!!!\n", "green");
     }
 
     public function actionSecond()

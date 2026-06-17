@@ -6,7 +6,23 @@
 
 # Rudra-Cli | [API](https://github.com/Jagepard/Rudra-Cli/blob/main/docs.md)
 
+The CLI component of **Rudra Framework**. Lightweight, straightforward, built on the KISS principle. No hidden dependencies, no magic — just clean, predictable command routing.
+
+#### Install
+```composer require rudra/cli```
+#### Usage
+Create a file named ```rudra```:
+
 ```php
+#!/usr/bin/php
+<?php
+
+if (php_sapi_name() !== 'cli') {
+    exit;
+}
+
+require __DIR__ . '/vendor/autoload.php';
+
 use Rudra\Cli\Console;
 use Rudra\Cli\Tests\App\Command\TestCommand;
 
@@ -18,15 +34,21 @@ $console->addCommand('second', [TestCommand::class, "actionSecond"]);
 
 $console->invoke($inputArgs);
 ```
+##### Run via PHP:
 ```php rudra spongebob```
 
-- Вы готовы дети?  Скажите ДА капитан: да
-- Не слышу!!!(
+- Are you ready, kids? Say AYE, captain: yes
+- I can't hear you!!!
 
 ```php rudra spongebob```
-- Вы готовы дети?  Скажите ДА капитан: ДА
-- Кто обетает на дне океана?! SPONGEBOB SQUAREPANTS!!!
+- Are you ready, kids? Say AYE, captain: AYE
+- Who lives in a pineapple under the sea?! SPONGEBOB SQUAREPANTS!!!
 
+##### Or make it executable and run directly:
+```
+chmod +x rudra
+./rudra spongebob
+```
 ## License
 
 This project is licensed under the **Mozilla Public License 2.0 (MPL-2.0)** — a free, open-source license that:
@@ -38,13 +60,3 @@ This project is licensed under the **Mozilla Public License 2.0 (MPL-2.0)** — 
 
 📄 Full license text: [LICENSE](./LICENSE)  
 🌐 Official MPL-2.0 page: https://mozilla.org/MPL/2.0/
-
---------------------------
-Проект распространяется под лицензией **Mozilla Public License 2.0 (MPL-2.0)**. Это означает:
- - Вы можете свободно использовать, изменять и распространять код.
- - При изменении файлов, содержащих исходный код из этого репозитория, вы обязаны оставить их открытыми под той же лицензией.
- - Вы **обязаны сохранять уведомления об авторстве** и ссылку на оригинал.
- - Вы можете встраивать код в проприетарные проекты, если исходные файлы остаются под MPL.
-
-📄  Полный текст лицензии (на английском): [LICENSE](./LICENSE)  
-🌐 Официальная страница: https://mozilla.org/MPL/2.0/
