@@ -8,7 +8,7 @@
  * @author  Korotkov Danila (Jagepard) <jagepard@yandex.ru>
  * @license https://mozilla.org/MPL/2.0/  MPL-2.0
  * 
- * phpunit src/tests/ConsoleTest --coverage-html src/tests/coverage-html
+ * phpunit tests/ConsoleTest.php
  */
 
 namespace Rudra\Cli\Tests;
