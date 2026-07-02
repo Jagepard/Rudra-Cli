@@ -70,8 +70,8 @@ class ConsoleTest extends \PHPUnit\Framework\TestCase
 
         ob_start();
         $command->actionIndex();
-        $output = ob_get_clean();
-        $output = preg_replace('/\e\[[0-9;]*m/', '', $output);
+        $rawOutput = ob_get_clean();
+        $output    = preg_replace('/\e\[[0-9;]*m/', '', $rawOutput);
 
         $this->assertStringContainsString("Are you ready, kids? Say AYE captain: ", $output);
         $this->assertStringContainsString("Who lives in a pineapple under the sea?! SPONGEBOB SQUAREPANTS!!!", $output);
@@ -109,8 +109,8 @@ class ConsoleTest extends \PHPUnit\Framework\TestCase
     {
         ob_start();
         $this->console->invoke(['invalidCommand' => []]);
-        $output = ob_get_clean();
-        $output = preg_replace('/\e\[[0-9;]*m/', '', $output);
+        $rawOutput = ob_get_clean();
+        $output    = preg_replace('/\e\[[0-9;]*m/', '', $rawOutput);
 
         $this->assertStringContainsString("Command \"invalidCommand\" not found", $output);
     }
@@ -122,8 +122,8 @@ class ConsoleTest extends \PHPUnit\Framework\TestCase
 
         ob_start();
         $this->console->invoke(['testCommand' => []]);
-        $output = ob_get_clean();
-        $output = preg_replace('/\e\[[0-9;]*m/', '', $output);
+        $rawOutput = ob_get_clean();
+        $output    = preg_replace('/\e\[[0-9;]*m/', '', $rawOutput);
 
         $this->assertStringContainsString("Custom action called!", $output);
     }
