@@ -65,7 +65,9 @@ class Console implements ConsoleInterface
         $fgCode = self::COLOR[$fg];
         $bgCode = self::COLOR[$bg] + 10;
 
-        echo "\e[{$fgCode};{$bgCode}m{$text}\e[0m";
+        // Remove trailing newline, add clear-to-end-line BEFORE newline
+        $text = rtrim($text, "\n\r");
+        echo "\e[{$fgCode};{$bgCode}m{$text}\e[K\e[0m" . PHP_EOL;
     }
 
     /**
