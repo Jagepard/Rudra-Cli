@@ -41,7 +41,6 @@ class ConsoleTest extends \PHPUnit\Framework\TestCase
         $this->assertStringContainsString("\e[32;49m", $output);
         
         // Check background clearing
-        // $this->assertStringContainsString("\e[K", $output);
         $this->assertStringContainsString("\e[49m", $output);
         
         // Check attribute reset
