@@ -17,9 +17,9 @@ class TestCommand
 {
     public function actionIndex()
     {
-        Cli::printer("Are you ready, kids? ", "magneta");
+        Cli::printer("Are you ready, kids? ", "magenta");
         Cli::printer("Say AYE", "yellow");
-        Cli::printer(" captain: ", "magneta");
+        Cli::printer(" captain: ", "magenta");
 
     if (strtolower(trim(Cli::reader())) !== 'aye') {
         Cli::printer("I can't hear you!!!\n", "red");
