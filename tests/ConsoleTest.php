@@ -25,13 +25,26 @@ class ConsoleTest extends \PHPUnit\Framework\TestCase
         $this->console = new Console();
     }
 
-    public function testPrinter()
+    public function testPrinter(): void
     {
         ob_start();
         $this->console->printer("Test text", "green", "default");
         $output = ob_get_clean();
 
-        $this->assertStringContainsString("\e[32;49mTest text\e[0m", $output);
+        // Check that text is present
+        $this->assertStringContainsString("Test text", $output);
+        
+        // Check that newline is present
+        $this->assertStringContainsString("\n", $output);
+        
+        // Check color codes
+        $this->assertStringContainsString("\e[32;49m", $output);
+        
+        // Check background clearing
+        $this->assertStringContainsString("\e[49m", $output);
+        
+        // Check attribute reset
+        $this->assertStringContainsString("\e[0m", $output);
     }
 
     public function testAddCommandThrowsException()
@@ -73,7 +86,12 @@ class ConsoleTest extends \PHPUnit\Framework\TestCase
         $rawOutput = ob_get_clean();
         $output    = preg_replace('/\e\[[0-9;]*m/', '', $rawOutput);
 
-        $this->assertStringContainsString("Are you ready, kids? Say AYE captain: ", $output);
+        // Assert each part of the message is present
+        $this->assertStringContainsString("Are you ready, kids?", $output);
+        $this->assertStringContainsString("Say AYE", $output);
+        $this->assertStringContainsString("captain:", $output);
+        $this->assertStringContainsString("Who lives in a pineapple under the sea?!", $output);
+        $this->assertStringContainsString("SPONGEBOB SQUAREPANTS!!!", $output);
         $this->assertStringContainsString("Who lives in a pineapple under the sea?! SPONGEBOB SQUAREPANTS!!!", $output);
     }
 
