@@ -27,21 +27,24 @@ class ConsoleTest extends \PHPUnit\Framework\TestCase
 
     public function testPrinter(): void
     {
+        // Test 1: Text without trailing newline
         ob_start();
         $this->console->printer("Test text", "green", "default");
         $output = ob_get_clean();
 
-        // Check that text is present
         $this->assertStringContainsString("Test text", $output);
-        
-        // Check color codes
-        $this->assertStringContainsString("\e[32;49m", $output);
-        
-        // Check background clearing
-        $this->assertStringContainsString("\e[49m", $output);
-        
-        // Check attribute reset
-        $this->assertStringContainsString("\e[0m", $output);
+        $this->assertStringContainsString("\e[32;49m", $output); // Green text, default background
+        $this->assertStringContainsString("\e[K", $output);      // Clear to end of line (critical fix)
+        $this->assertStringContainsString("\e[0m", $output);     // Reset all attributes
+
+        // Test 2: Text WITH trailing newline (verifies the regex extraction logic)
+        ob_start();
+        $this->console->printer("Test text\n", "green", "default");
+        $outputWithNewline = ob_get_clean();
+
+        $this->assertStringContainsString("Test text", $outputWithNewline);
+        // Crucial: the newline MUST come AFTER the reset codes to prevent background bleeding
+        $this->assertStringContainsString("\e[K\e[0m\n", $outputWithNewline);
     }
 
     public function testAddCommandThrowsException()
