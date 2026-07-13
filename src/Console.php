@@ -69,7 +69,7 @@ class Console implements ConsoleInterface
         $text = rtrim($text, "\n\r");
         
         // \e[49m explicitly resets background color
-        echo "\e[{$fgCode};{$bgCode}m{$text}\e[49m\e[0m" . PHP_EOL;
+        echo "\e[{$fgCode};{$bgCode}m{$text}\e[49m\e[0m";
     }
 
     /**

@@ -34,9 +34,6 @@ class ConsoleTest extends \PHPUnit\Framework\TestCase
         // Check that text is present
         $this->assertStringContainsString("Test text", $output);
         
-        // Check that newline is present
-        $this->assertStringContainsString("\n", $output);
-        
         // Check color codes
         $this->assertStringContainsString("\e[32;49m", $output);
         
