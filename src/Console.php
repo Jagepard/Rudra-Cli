@@ -54,7 +54,8 @@ class Console implements ConsoleInterface
     }
 
     /**
-     * Prints formatted text with foreground and background colors
+     * Prints formatted text with foreground and background colors.
+     * Automatically prevents background color bleeding to the end of the terminal line.
      */
     #[\Override]
     public function printer(string $text, string $fg = "default", string $bg = "default"): void
@@ -64,9 +65,16 @@ class Console implements ConsoleInterface
 
         $fgCode = self::COLOR[$fg];
         $bgCode = self::COLOR[$bg] + 10;
-        
-        // \e[49m explicitly resets background color
-        echo "\e[{$fgCode};{$bgCode}m{$text}\e[49m\e[0m";
+
+        // 1. Extract trailing newlines to re-apply them AFTER the ANSI reset
+        $trailingNewlines = '';
+        if (preg_match('/(\r?\n|\r)$/', $text, $matches)) {
+            $trailingNewlines = $matches[1];
+            $text = substr($text, 0, -strlen($trailingNewlines));
+        }
+
+        // 2. \e[K clears to end of line, \e[0m resets all attributes
+        echo "\e[{$fgCode};{$bgCode}m{$text}\e[K\e[0m{$trailingNewlines}";
     }
 
     /**
