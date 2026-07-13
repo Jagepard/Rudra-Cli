@@ -64,9 +64,6 @@ class Console implements ConsoleInterface
 
         $fgCode = self::COLOR[$fg];
         $bgCode = self::COLOR[$bg] + 10;
-
-        // Remove trailing newlines
-        $text = rtrim($text, "\n\r");
         
         // \e[49m explicitly resets background color
         echo "\e[{$fgCode};{$bgCode}m{$text}\e[49m\e[0m";
