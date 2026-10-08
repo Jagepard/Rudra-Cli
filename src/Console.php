@@ -17,23 +17,23 @@ class Console implements ConsoleInterface
 {
     // Colors of text decoration in the console
     public const array COLOR = [
-        "default"       => 39,
-        "black"         => 30,
-        "red"           => 31,
-        "green"         => 32,
-        "yellow"        => 33,
-        "blue"          => 34,
-        "magenta"       => 35,
-        "cyan"          => 36,
-        "light_gray"    => 37,
-        "dark_gray"     => 90,
-        "light_red"     => 91,
-        "light_green"   => 92,
-        "light_yellow"  => 93,
-        "light_blue"    => 94,
-        "light_magenta" => 95,
-        "light_cyan"    => 96,
-        "white"         => 97,
+        'default'       => 39,
+        'black'         => 30,
+        'red'           => 31,
+        'green'         => 32,
+        'yellow'        => 33,
+        'blue'          => 34,
+        'magenta'       => 35,
+        'cyan'          => 36,
+        'light_gray'    => 37,
+        'dark_gray'     => 90,
+        'light_red'     => 91,
+        'light_green'   => 92,
+        'light_yellow'  => 93,
+        'light_blue'    => 94,
+        'light_magenta' => 95,
+        'light_cyan'    => 96,
+        'white'         => 97,
     ];
 
     private array $registry = [];
@@ -58,7 +58,7 @@ class Console implements ConsoleInterface
      * Automatically prevents background color bleeding to the end of the terminal line.
      */
     #[\Override]
-    public function printer(string $text, string $fg = "default", string $bg = "default"): void
+    public function printer(string $text, string $fg = 'default', string $bg = 'default'): void
     {
         $this->checkColorExists($fg);
         $this->checkColorExists($bg);
@@ -85,7 +85,7 @@ class Console implements ConsoleInterface
     #[\Override]
     public function reader(): string
     {
-        $this->stdin ??= fopen("php://stdin", "r");
+        $this->stdin ??= fopen('php://stdin', 'r');
         
         if ($this->stdin === false) {
             throw new LogicException('Failed to open stdin stream');
@@ -122,17 +122,17 @@ class Console implements ConsoleInterface
         $firstKey = array_key_first($inputArgs);
 
         if ($firstKey === null) {
-            $this->printer("⚠️  No command provided" . PHP_EOL, 'light_yellow');
+            $this->printer('⚠️  No command provided' . PHP_EOL, 'light_yellow');
             return;
         }
 
         if (!array_key_exists($firstKey, $this->registry)) {
-            $this->printer("⚠️  Command \"$firstKey\" not found" . PHP_EOL, 'light_yellow');
+            $this->printer("⚠️  Command \'$firstKey\' not found" . PHP_EOL, 'light_yellow');
             return;
         }
 
         $class  = new $this->registry[$firstKey][0];
-        $method = $this->registry[$firstKey][1] ?? "actionIndex";
+        $method = $this->registry[$firstKey][1] ?? 'actionIndex';
 
         $class->$method();
     }

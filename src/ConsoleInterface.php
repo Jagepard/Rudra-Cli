@@ -13,7 +13,7 @@ namespace Rudra\Cli;
 
 interface ConsoleInterface
 {
-    public function printer(string $text, string $fg = "default", string $bg = "default"): void;
+    public function printer(string $text, string $fg = 'default', string $bg = 'default'): void;
     public function reader(): string;
     public function addCommand(string $name, array $command): void;
     public function invoke(array $inputArgs): void;

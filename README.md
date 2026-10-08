@@ -29,7 +29,7 @@ parse_str(implode('&', array_slice($argv, 1)), $inputArgs);
 
 $console = new Console();
 $console->addCommand('spongebob', [TestCommand::class]);
-$console->addCommand('second', [TestCommand::class, "actionSecond"]);
+$console->addCommand('second', [TestCommand::class, 'actionSecond']);
 
 $console->invoke($inputArgs);
 ```
