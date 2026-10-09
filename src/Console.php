@@ -38,11 +38,19 @@ class Console implements ConsoleInterface
 
     private array $registry = [];
 
-    private ?resource $stdin = null;
+    /** @var resource|null */
+    private mixed $stdin = null;
 
-    #[\Override]
-    public function setStdin(?resource $stream): void
+    /**
+     * @param resource|null $stream
+     * @throws \InvalidArgumentException
+     */
+    public function setStdin(mixed $stream): void
     {
+        if ($stream !== null && !is_resource($stream)) {
+            throw new \InvalidArgumentException('Argument #1 ($stream) must be of type resource or null');
+        }
+        
         $this->stdin = $stream;
     }
 
